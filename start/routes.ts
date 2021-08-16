@@ -27,3 +27,5 @@ Route.get('/', async () => {
 Route.post('/register', 'AuthController.register')
 Route.post('/login', 'AuthController.login')
 Route.get('/logout', 'AuthController.logout').middleware(['auth'])
+Route.get('/password/recover', 'AuthController.recover')
+Route.post('/password/reset', 'AuthController.reset')
