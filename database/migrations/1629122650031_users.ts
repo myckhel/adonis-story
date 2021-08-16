@@ -9,7 +9,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('name', 255).unique()
       table.string('email', 255).notNullable()
       table.date('dob').notNullable()
-      table.enum('sex', ['male', 'female']).default('male')
+      table.enum('sex', ['male', 'female'])
       table.bigInteger('phone')
       table.string('password', 180).notNullable()
       table.string('remember_me_token').nullable()
