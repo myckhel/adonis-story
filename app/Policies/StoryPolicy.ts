@@ -4,9 +4,9 @@ import Story from 'App/Models/Story'
 
 export default class StoryPolicy extends BasePolicy {
   public async update(user: User, story: Story) {
-    return user.id === story.userId
+    return user.id === story.userId || user.role === 'admin'
   }
   public async delete(user: User, story: Story) {
-    return user.id === story.userId
+    return user.id === story.userId || user.role === 'admin'
   }
 }

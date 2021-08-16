@@ -32,4 +32,6 @@ Route.post('/password/reset', 'AuthController.reset')
 Route.group(() => {
   Route.get('/logout', 'AuthController.logout')
   Route.resource('stories', 'StoriesController')
+
+  Route.post('/users/roles', 'UsersController.role')
 }).middleware(['auth'])
