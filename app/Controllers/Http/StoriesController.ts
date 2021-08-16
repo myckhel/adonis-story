@@ -29,8 +29,10 @@ export default class StoriesController {
     return Story.query().where('id', id).firstOrFail()
   }
 
-  public async update({ params: { id }, request }: HttpContextContract) {
-    const story = await Story.query().where('id', id).firstOrFail()
+  public async update({ params: { id }, request, bouncer }: HttpContextContract) {
+    const story = await Story.findOrFail(id)
+
+    await bouncer.with('StoryPolicy').authorize('update', story)
 
     story.merge(request.only(['text', 'font', 'color']))
 
@@ -39,8 +41,10 @@ export default class StoriesController {
     return story
   }
 
-  public async destroy({ params: { id } }: HttpContextContract) {
-    const story = await Story.query().where('id', id).firstOrFail()
+  public async destroy({ params: { id }, bouncer }: HttpContextContract) {
+    const story = await Story.findOrFail(id)
+
+    await bouncer.with('StoryPolicy').authorize('delete', story)
 
     await story.delete()
     return { status: true, message: 'Story deleted successfully' }
