@@ -16,6 +16,9 @@ export default class User extends BaseModel {
   @column()
   public sex: string
 
+  @column()
+  public role: string
+
   @column.date({})
   public dob: DateTime
 
