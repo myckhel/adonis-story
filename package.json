@@ -6,7 +6,7 @@
     "ace": "node ace ",
     "build": "node ace build --production",
     "start": "node server.js",
-    "start:prod": "ENV_SILENT=true node build/server.js",
+    "start:prod": "node build/server.js",
     "watch": "node ace serve --watch",
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
